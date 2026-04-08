@@ -1,0 +1,46 @@
+{
+  "name": "@taurus-ai/swarm-spawner-ai-sdk",
+  "version": "0.1.0",
+  "description": "Vercel AI SDK adapter for Swarm Spawner — bring your own LLM provider",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "swarm-spawner",
+    "vercel-ai-sdk",
+    "openai",
+    "anthropic",
+    "llm",
+    "adapter"
+  ],
+  "author": "TAURUS AI Corp <admin@taurusai.io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Taurus-Ai-Corp/swarm-spawner-ai-sdk.git"
+  },
+  "peerDependencies": {
+    "@taurus-ai/swarm-spawner": ">=0.4.0",
+    "ai": ">=3.0.0"
+  },
+  "devDependencies": {
+    "@taurus-ai/swarm-spawner": "^0.4.0",
+    "ai": "^4.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.1"
+  }
+}
