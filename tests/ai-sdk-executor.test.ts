@@ -159,6 +159,43 @@ describe("createAISDKExecutor", () => {
     );
   });
 
+  it("should reject empty task", async () => {
+    const executor = createAISDKExecutor({ model: mockModel });
+    const agent = makeAgent({ task: "" });
+
+    await expect(executor(agent, makeModelConfig())).rejects.toThrow("empty task");
+    expect(mockGenerateText).not.toHaveBeenCalled();
+  });
+
+  it("should reject whitespace-only task", async () => {
+    const executor = createAISDKExecutor({ model: mockModel });
+    const agent = makeAgent({ task: "   " });
+
+    await expect(executor(agent, makeModelConfig())).rejects.toThrow("empty task");
+    expect(mockGenerateText).not.toHaveBeenCalled();
+  });
+
+  it("should wrap promptBuilder errors with agent context", async () => {
+    const executor = createAISDKExecutor({
+      model: mockModel,
+      promptBuilder: () => { throw new Error("bad template"); },
+    });
+
+    await expect(executor(makeAgent(), makeModelConfig())).rejects.toThrow("promptBuilder failed");
+    await expect(executor(makeAgent(), makeModelConfig())).rejects.toThrow("bad template");
+    expect(mockGenerateText).not.toHaveBeenCalled();
+  });
+
+  it("should reject when promptBuilder returns empty string", async () => {
+    const executor = createAISDKExecutor({
+      model: mockModel,
+      promptBuilder: () => "",
+    });
+
+    await expect(executor(makeAgent(), makeModelConfig())).rejects.toThrow("empty string");
+    expect(mockGenerateText).not.toHaveBeenCalled();
+  });
+
   it("should propagate generateText errors", async () => {
     mockGenerateText.mockRejectedValueOnce(new Error("Rate limited"));
     const executor = createAISDKExecutor({ model: mockModel });

@@ -1,6 +1,6 @@
 {
   "name": "@taurus-ai/swarm-spawner-ai-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vercel AI SDK adapter for Swarm Spawner — bring your own LLM provider",
   "type": "module",
   "main": "./dist/index.js",

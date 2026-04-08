@@ -73,7 +73,22 @@ export function createAISDKExecutor(
   } = options;
 
   return async (agent: EphemeralAgent, _config: ModelConfig): Promise<AISDKResult> => {
-    const prompt = promptBuilder(agent);
+    if (!agent.task?.trim()) {
+      throw new Error(`Agent ${agent.id}: empty task — refusing to send empty prompt to LLM`);
+    }
+
+    let prompt: string;
+    try {
+      prompt = promptBuilder(agent);
+    } catch (err) {
+      throw new Error(
+        `Agent ${agent.id}: promptBuilder failed — ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+
+    if (!prompt.trim()) {
+      throw new Error(`Agent ${agent.id}: promptBuilder returned empty string`);
+    }
 
     const result = await generateText({
       model,
