@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { createAISDKExecutor, createTieredExecutor } from "../src/index.js";
-import type { EphemeralAgent, ModelConfig } from "@taurus-ai/swarm-spawner";
+import type { EphemeralAgent, ModelConfig } from "@gridera/migrate";
 
 // Mock the ai package
 vi.mock("ai", () => ({
