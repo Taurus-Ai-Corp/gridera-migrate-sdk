@@ -1,7 +1,7 @@
 import { generateText } from "ai";
 import type { LanguageModel } from "ai";
-import type { ModelExecutor, EphemeralAgent } from "@taurus-ai/swarm-spawner";
-import type { ModelConfig } from "@taurus-ai/swarm-spawner";
+import type { ModelExecutor, EphemeralAgent } from "@gridera/migrate";
+import type { ModelConfig } from "@gridera/migrate";
 
 export interface AISDKExecutorOptions {
   /** The AI SDK language model instance (e.g. openai("gpt-4o"), anthropic("claude-sonnet-4-20250514")) */
@@ -52,7 +52,7 @@ function defaultPromptBuilder(agent: EphemeralAgent): string {
  * Usage:
  * ```typescript
  * import { openai } from "@ai-sdk/openai";
- * import { createAISDKExecutor } from "@taurus-ai/swarm-spawner-ai-sdk";
+ * import { createAISDKExecutor } from "@gridera/migrate-sdk";
  *
  * const executor = createAISDKExecutor({ model: openai("gpt-4o") });
  * const spawner = new SwarmSpawner({ executor });
@@ -113,12 +113,12 @@ export function createAISDKExecutor(
 
 /**
  * Creates a ModelExecutor with per-agent model selection.
- * Maps swarm-spawner's modelTier (fast/balanced/deep) to specific AI SDK models.
+ * Maps gridera-migrate's modelTier (fast/balanced/deep) to specific AI SDK models.
  *
  * Usage:
  * ```typescript
  * import { openai } from "@ai-sdk/openai";
- * import { createTieredExecutor } from "@taurus-ai/swarm-spawner-ai-sdk";
+ * import { createTieredExecutor } from "@gridera/migrate-sdk";
  *
  * const executor = createTieredExecutor({
  *   fast: openai("gpt-4o-mini"),

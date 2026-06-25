@@ -1,7 +1,7 @@
 {
-  "name": "@taurus-ai/swarm-spawner-ai-sdk",
+  "name": "@gridera/migrate-sdk",
   "version": "0.1.1",
-  "description": "Vercel AI SDK adapter for Swarm Spawner — bring your own LLM provider",
+  "description": "Vercel AI SDK adapter for GRIDERA Migrate — bring your own LLM provider",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -20,7 +20,7 @@
   "keywords": [
     "ai",
     "agents",
-    "swarm-spawner",
+    "gridera-migrate",
     "vercel-ai-sdk",
     "openai",
     "anthropic",
@@ -31,14 +31,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Taurus-Ai-Corp/swarm-spawner-ai-sdk.git"
+    "url": "https://github.com/Taurus-Ai-Corp/gridera-migrate-ai-sdk.git"
   },
   "peerDependencies": {
-    "@taurus-ai/swarm-spawner": ">=0.4.0",
+    "@gridera/migrate": ">=0.4.0",
     "ai": ">=3.0.0"
   },
   "devDependencies": {
-    "@taurus-ai/swarm-spawner": "^0.4.0",
+    "@gridera/migrate": "^0.4.0",
     "ai": "^4.3.0",
     "typescript": "^5.7.0",
     "vitest": "^3.1.1"
